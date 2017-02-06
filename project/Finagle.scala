@@ -15,5 +15,9 @@ object Finagle extends Base {
     .withTests()
     .withE2e()
 
-  val all = aggregateDir("finagle", buoyantCore, h2)
+  val msgpack = projectDir("finagle/msgpack")
+    .dependsOn(buoyantCore)
+    .withLibs(Deps.msgpack)
+
+  val all = aggregateDir("finagle", buoyantCore, h2, msgpack)
 }
