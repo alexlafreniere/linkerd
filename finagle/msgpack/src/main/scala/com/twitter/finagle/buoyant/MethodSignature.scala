@@ -3,9 +3,6 @@ package com.twitter.finagle.buoyant.msgpack
 import java.lang.reflect.Method
 import java.security.MessageDigest
 
-/**
- * @author Dmitri Babaev (dmitri.babaev@gmail.com)
- */
 object MethodSignature {
   def generate(m: Method) = {
     val digest = MessageDigest.getInstance("MD5")

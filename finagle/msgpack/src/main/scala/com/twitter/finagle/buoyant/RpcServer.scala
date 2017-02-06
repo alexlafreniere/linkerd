@@ -9,7 +9,7 @@ class RpcServer(
   val handlers: Map[String, AnyRef],
   executorService: ExecutorService
 )
-  extends Service[RpcRequest, RpcResponse] with Logging {
+  extends Service[RpcRequest, RpcResponse] {
 
   val handlerMethods = handlers.map {
     case (name, handler) =>

@@ -148,9 +148,6 @@ class MsgPackEncoder extends OneToOneEncoder {
   }
 }
 
-/**
- * @author Dmitri Babaev (dmitri.babaev@gmail.com)
- */
 class MsgPackCodec extends CodecFactory[RpcRequest, RpcResponse] {
   def client = Function.const {
     new Codec[RpcRequest, RpcResponse] {

@@ -60,6 +60,5 @@ object Deps {
   val statsd = "com.datadoghq" % "java-dogstatsd-client" % "2.3"
 
   // msgpack-rpc deps
-  val msgpack = "org.msgpack" % "msgpack-core" % "0.8.11"
-
+  val msgpack = "org.msgpack" % "msgpack" % "0.6.8"
 }
