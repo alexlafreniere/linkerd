@@ -28,7 +28,7 @@ case class SerializableTransportWrapper(var obj: AnyRef) extends MessagePackable
     val oos = new ObjectOutputStream(baos)
     oos.writeObject(obj)
     val bar = baos.toByteArray
-    pk.write(bar)
+    val _ = pk.write(bar)
   }
 }
 
@@ -85,7 +85,7 @@ case class RpcRequest(
     val notNullArgs = args.filter(_ != null)
     pk.writeArrayBegin(notNullArgs.size)
     notNullArgs.foreach(pk.write)
-    pk.writeArrayEnd()
+    val _ = pk.writeArrayEnd()
   }
 }
 
@@ -114,7 +114,7 @@ case class RpcResponse(var response: AnyRef, var failed: Boolean) extends Messag
   def writeTo(pk: Packer) {
     pk.write(Option(response).map(_.getClass.getName).getOrElse("null"))
     Option(response).foreach(pk.write)
-    pk.write(failed)
+    val _ = pk.write(failed)
   }
 }
 
