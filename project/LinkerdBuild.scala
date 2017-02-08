@@ -77,7 +77,10 @@ object LinkerdBuild extends Base {
         thriftIdl % "test,e2e"
       )
 
-    val all = aggregateDir("router", core, h2, http, mux, thrift)
+    val msgpack = projectDir("router/msgpack")
+      .dependsOn(core, Finagle.msgpack)
+
+    val all = aggregateDir("router", core, h2, http, mux, thrift, msgpack)
   }
 
   object Namer {
@@ -584,6 +587,7 @@ object LinkerdBuild extends Base {
   val routerMux = Router.mux
   val routerThrift = Router.thrift
   val routerThriftIdl = Router.thriftIdl
+  val routerMsgpack = Router.msgpack
 
   val telemetry = Telemetry.all
   val telemetryCore = Telemetry.core
